@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowGuard™ LED Dog Collar - Protect Your Best Friend at Night</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Reverted to original professional dark blue-gray background */
+            background-color: #1A202C;
+            color: #E2E8F0; /* Light text color for readability */
+        }
+        h1, h2, h3 {
+            color: #FFFFFF; /* White for headings on dark backgrounds */
+        }
+        .gradient-button {
+            background-image: linear-gradient(to right, #3b82f6, #2563eb); /* Blue-500 to Blue-700 */
+            transition: all 0.3s ease;
+            color: #FFFFFF; /* White text on button */
+            /* New: Zoom in/out animation */
+            animation: zoom-in-out 1.8s infinite alternate ease-in-out; /* Slightly faster, smoother ease */
+            transform-origin: center center; /* Ensure zoom is centered */
+            will-change: transform; /* Hint to browsers for performance */
+        }
+        .gradient-button:hover {
+            background-image: linear-gradient(to right, #2563eb, #3b82f6);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); /* Blue shadow */
+            animation-play-state: paused; /* Pause animation on hover */
+            transform: translateY(-3px); /* Add a slight lift on hover */
+        }
+        .section-bg-primary {
+            background-color: #1A202C; /* Main dark background */
+        }
+        .section-bg-secondary {
+            background-color: #2D3748; /* Slightly lighter dark background for sections */
+        }
+        /* Gradient background for sections with prominent images, mimicking the reference */
+        .section-gradient-bg {
+            background: linear-gradient(to bottom, #1A202C, #2D3748, #1A202C); /* Subtle dark gradient */
+        }
+        .feature-icon {
+            color: #3b82f6; /* Blue icon color */
+        }
+        .testimonial-card {
+            background-color: #2D3748; /* Matches section-bg-secondary */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            color: #E2E8F0; /* Light text for readability */
+        }
+        .testimonial-card p {
+            color: #CBD5E0; /* Slightly darker light text for body */
+        }
+        .faq-item {
+            background-color: #2D3748; /* Matches section-bg-secondary */
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #60a5fa; /* Lighter blue for questions */
+        }
+        .faq-answer {
+            padding: 0 1.5rem 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            color: #CBD5E0; /* Light text for readability */
+        }
+        .faq-answer.open {
+            max-height: 200px; /* Adjust as needed */
+            padding: 0.5rem 1.5rem 1.5rem;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-icon.rotate {
+            transform: rotate(180deg);
+        }
+        .section-separator {
+            height: 2px;
+            background-color: #4A5568; /* A darker gray line */
+            width: 80%;
+            margin: 4rem auto;
+            border-radius: 9999px; /* Fully rounded ends */
+        }
+        /* Specific styles for the urgency section - now deep blue-gray */
+        .urgency-section-bg {
+            background-color: #10141D; /* Very dark, desaturated blue-gray for urgency */
+            color: #FFFFFF; /* White text for contrast */
+        }
+        .urgency-title-box {
+            background-color: #2A3A5A; /* Darker blue for the title box */
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem; /* Reduced padding */
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3), 0 6px 12px -2px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+            margin-bottom: 2rem; /* Space below title box */
+        }
+        .urgency-title-box h2 {
+            color: #FFFFFF; /* White title text */
+            font-size: 2.5rem; /* Adjust size if needed */
+            line-height: 1.2;
+        }
+        .urgency-card {
+            background-color: #2563EB; /* Slightly lighter blue for cards */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #60A5FA; /* Lighter blue border for urgency cards */
+        }
+        .urgency-card h3 {
+            color: #FFFFFF; /* White heading in urgency card */
+        }
+        .urgency-card p {
+            color: #BFDBFE; /* Very light blue for text in urgency card */
+        }
+        /* Orange accent line below titles */
+        .title-accent-line {
+            display: block;
+            width: 60px; /* Adjust width as needed */
+            height: 4px;
+            background-color: #FF8C00; /* Dark Orange */
+            margin: 0.5rem 0 1.5rem 0; /* Adjust margin for spacing */
+            border-radius: 9999px;
+        }
+        /* Center accent line for centered titles */
+        .title-accent-line.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* New class for the blue underline highlight */
+        .highlight-underline {
+            border-bottom: 2px solid #60A5FA; /* Matching urgency card border color */
+            padding-bottom: 2px; /* Small padding to lift the line slightly from text */
+            display: inline; /* Ensure it wraps with text */
+        }
+
+        /* Keyframes for zoom-in-out animation */
+        @keyframes zoom-in-out {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Increased zoom effect for visibility */
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen bg-cover bg-center flex items-center justify-center py-16 md:py-0 section-gradient-bg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center relative z-10 gap-8">
+            <!-- Text Content -->
+            <div class="text-left md:w-1/2 lg:w-2/5 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white mb-4">
+                    EXPERIENCE THE ULTIMATE NIGHT SAFETY FOR YOUR BEST FRIEND
+                </h1>
+                <span class="title-accent-line"></span>
+                <p class="text-lg md:text-xl text-gray-300 mb-8">
+                    Ensure your dog is visible and safe during every nighttime adventure with GlowGuard™.
+                </p>
+                <a href="#buy-now" class="gradient-button text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+                    Buy Now – Only $19.99
+                </a>
+            </div>
+            <!-- Image -->
+            <div class="md:w-1/2 lg:w-3/5 flex justify-center md:justify-end">
+                <!-- Imagem do Golden Retriever com o link fornecido pelo usuário (Shopify CDN) -->
+                <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/ChatGPTImageJul2_2025_12_21_09PM_ea94faa3-2534-428f-aab8-d9d7d119a4e6.png?v=1751467320" alt="Golden Retriever com Coleira LED Azul à Noite" class="w-full max-w-lg md:max-w-none h-auto rounded-xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- NEW URGENCY/DANGER SECTION -->
+    <section class="py-16 urgency-section-bg text-center">
+        <div class="container mx-auto px-4">
+            <div class="urgency-title-box mx-auto max-w-2xl"> <!-- Reduced max-width -->
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-4">The Unspoken Truth: Nighttime Dangers Are Real.</h2>
+                <span class="title-accent-line center"></span>
+            </div>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto mb-10">
+                Every year, <span class="highlight-underline">over 1.7 million beloved pets go missing, and countless more face tragic accidents due to poor visibility after dark.</span> Don't let your best friend become another statistic.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="urgency-card flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/lost-dog-sign-vector-sketch-260nw-586118261.webp?v=1751482836" alt="Lost Pet Icon" class="mx-auto mb-4 w-24 h-24 rounded-full">
+                    <h3 class="text-2xl font-semibold mb-2">Lost in the Dark</h3>
+                    <p class="text-blue-100">Without proper illumination, a quick dash can turn into a desperate search.</p>
+                </div>
+                <div class="urgency-card flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/dog-injured-eye-bandage-veterinary-600nw-2277579607.webp?v=1751483215" alt="Car Accident Icon" class="mx-auto mb-4 w-24 h-24 rounded-full">
+                    <h3 class="text-2xl font-semibold mb-2">Invisible to Drivers</h3>
+                    <p class="text-blue-100">Vehicles often cannot see pets until it's too late, especially on unlit roads.</p>
+                </div>
+                <div class="urgency-card flex flex-col items-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/istockphoto-2043074168-612x612.jpg?v=1751483209" alt="Heartbreak Icon" class="mx-auto mb-4 w-24 h-24 rounded-full">
+                    <h3 class="text-2xl font-semibold mb-2">Avoid the Heartbreak</h3>
+                    <p class="text-blue-100">The emotional toll of a lost or injured pet is immeasurable. Act now.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- Unleash The Section -->
+    <section class="py-16 section-gradient-bg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">UNLEASH THE POTENTIAL OF SAFE NIGHT WALKS</h2>
+                <span class="title-accent-line"></span>
+                <p class="text-lg text-gray-300 mb-6">
+                    GlowGuard™ provides unparalleled visibility, transforming risky night walks into safe, enjoyable adventures. Protect your dog from unseen dangers and give yourself peace of mind.
+                </p>
+                <ul class="list-disc list-inside text-gray-300 text-lg space-y-2">
+                    <li>High-visibility LED for maximum safety</li>
+                    <li>Durable and comfortable for all breeds</li>
+                    <li>Long-lasting rechargeable battery</li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <!-- Imagem "Dog looking right with collar" com o link fornecido pelo usuário (Shopify CDN) -->
+                <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/S_15.75_0.98inch_Purple-06_480x480_fc86d4e2-0582-40a3-9c51-055e853d2d00.webp?v=1751482039" alt="Dog looking right with LED collar" class="w-full max-w-md h-auto rounded-xl shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- Illuminate the Night, Illuminate Their Section -->
+    <section class="py-16 section-gradient-bg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-8">
+            <div class="md:w-1/2 text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">ILLUMINATE THE NIGHT, ILLUMINATE THEIR WORLD</h2>
+                <span class="title-accent-line"></span>
+                <p class="text-lg text-gray-300 mb-6">
+                    With GlowGuard™ your furry friend won't just be seen; they'll stand out. Our advanced LED technology ensures they're visible from every angle, making them safe from traffic and easily spotted if they wander.
+                </p>
+                <!-- Adjusted mb for ul for better spacing -->
+                <ul class="list-disc list-inside text-gray-300 text-lg space-y-2 mb-10">
+                    <li>Bright, consistent glow for ultimate visibility</li>
+                    <li>Easy to use and adjust for a perfect fit</li>
+                    <li>Designed for all weather conditions</li>
+                </ul>
+                <a href="#buy-now" class="gradient-button text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out inline-block">
+                    Buy Now – Only $19.99
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <!-- Imagem "Dog looking left with collar" com o link fornecido pelo usuário (Shopify CDN) -->
+                <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/71j4ZQ4qTxL.jpg?v=1751481452" alt="Dog looking left with LED collar" class="w-full max-w-md h-auto rounded-xl shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- The Paw-fect Testimonials Section -->
+    <section class="py-16 section-bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-12">THE PAW-FECT TESTIMONIALS</h2>
+            <span class="title-accent-line center"></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card flex flex-col items-center text-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/6a1a9196-0487-455a-a8e4-9f8f5b0e8d76.__CR0_0_1600_1600_PT0_SX300_V1.jpg?v=1751483679" alt="Golden Retriever wearing GlowGuard collar" class="w-32 h-32 rounded-full mb-4 object-cover border-4 border-blue-500">
+                    <p class="text-gray-300 italic mb-4">"GlowGuard™ gave me back my peace of mind during evening walks. My Golden is always visible now!"</p>
+                    <p class="font-semibold text-white">- Happy Pet Parent</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card flex flex-col items-center text-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/o2M_mzRKSSHJjUGF8MkbF92lA5ukzLMrGI0C8z7nQEI.jpg?v=1751483561" alt="Husky wearing GlowGuard collar" class="w-32 h-32 rounded-full mb-4 object-cover border-4 border-blue-500">
+                    <p class="text-gray-300 italic mb-4">"The best investment for my Husky's safety. It's durable and the light is incredibly bright."</p>
+                    <p class="font-semibold text-white">- Satisfied Customer</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card flex flex-col items-center text-center">
+                    <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/A1HBIyWL-WL._CR5_0_2835_1600_SR684_386.jpg?v=1751483562" alt="Black Labrador wearing GlowGuard collar" class="mx-auto mb-4 w-32 h-32 rounded-full object-cover border-4 border-blue-500">
+                    <p class="text-gray-300 italic mb-4">"No more worries about my black Labrador at night. GlowGuard™ makes him shine!"</p>
+                    <p class="font-semibold text-white">- Grateful Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- Shine Bright, Stay Safe Section -->
+    <section class="py-16 section-gradient-bg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/ChatGPT_Image_Jul_2_2025_07_57_12_PM.png?v=1751482650" alt="Happy dog looking front" class="w-full max-w-md h-auto rounded-xl shadow-xl">
+            </div>
+            <div class="md:w-1/2 text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">SHINE BRIGHT, STAY SAFE</h2>
+                <span class="title-accent-line"></span>
+                <p class="text-lg text-gray-300 mb-6">
+                    Don't compromise on your dog's safety. With GlowGuard™, you're investing in peace of mind and countless safe adventures together. Join thousands of happy pet parents who trust GlowGuard™.
+                </p>
+                <a href="#buy-now" class="gradient-button text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+                    Get Your GlowGuard™ Collar for $19.99
+                </a>
+                <p class="text-sm text-gray-400 mt-4">Limited Stock Available!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- FAQ Section -->
+    <section class="py-16 section-bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
+            <span class="title-accent-line center"></span>
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What sizes are available for the GlowGuard™ collar?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The GlowGuard™ LED Dog Collar comes in multiple adjustable sizes (Small, Medium, Large) to fit a wide range of dog breeds. Please refer to our sizing chart on the product page for exact measurements.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I charge the GlowGuard™ collar?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Each GlowGuard™ collar includes a USB charging cable. Simply plug it into any standard USB port (e.g., computer, wall adapter) to recharge. A full charge typically takes 1-2 hours and provides 6-10 hours of continuous glow, depending on the mode.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is the GlowGuard™ collar waterproof?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The GlowGuard™ collar is designed to be weather-resistant and can withstand rain, snow, and splashes. However, it is not recommended for submersion in water (e.g., swimming).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is your return policy?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day satisfaction guarantee. If you're not completely happy with your GlowGuard™ collar, simply return it within 30 days for a full refund. Please see our full return policy for details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW CTA BUTTON BETWEEN FAQ AND FINAL BLOCK -->
+    <section class="py-16 section-bg-primary text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Protect Your Best Friend?</h2>
+            <span class="title-accent-line center"></span>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Don't wait! Give your dog the visibility and safety they deserve with GlowGuard™.
+            </p>
+            <a href="#buy-now" class="gradient-button text-white font-bold py-5 px-10 rounded-full text-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+                Buy Your GlowGuard™ Now!
+            </a>
+        </div>
+    </section>
+    <!-- END NEW CTA BUTTON -->
+
+    <div class="section-separator"></div>
+
+    <!-- NEW RETURN/GUARANTEE SECTION -->
+    <section class="py-16 section-bg-primary text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Shop with Confidence: Our Hassle-Free Guarantee</h2>
+            <span class="title-accent-line center"></span>
+            <div class="flex flex-col items-center justify-center mt-8">
+                <!-- Imagem do selo de garantia sem fundo -->
+                <img src="https://cdn.shopify.com/s/files/1/0948/6296/7115/files/Post_para_instagram_moderno_comunicado_importante_branco_e_vermelho-removebg-preview.png?v=1751484921" alt="Selo de Garantia de 30 Dias" class="w-64 h-64 mb-6 object-contain border-4 border-blue-500">
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                    Your pet's safety and your peace of mind are our top priorities. That's why every GlowGuard™ collar comes with a **30-Day Money-Back Guarantee**. If you're not completely satisfied, simply return it within 30 days for a full refund, no questions asked.
+                </p>
+                <a href="#" class="gradient-button text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out mt-8">
+                    Learn More About Our Returns
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- END NEW RETURN/GUARANTEE SECTION -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-500 text-sm">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 GlowGuard™. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="#" class="hover:text-blue-500 mx-2">Privacy Policy</a> |
+                <a href="#" class="hover:text-blue-500 mx-2">Terms of Service</a> |
+                <a href="#" class="hover:text-blue-500 mx-2">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.classList.remove('rotate');
+            } else {
+                // Close all other open answers
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    openAnswer.classList.remove('open');
+                    openAnswer.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate');
+                });
+                // Open the clicked answer
+                answer.classList.add('open');
+                icon.classList.add('rotate');
+            }
+        }
+    </script>
+</body>
+</html>
